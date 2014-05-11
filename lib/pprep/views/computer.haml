@@ -1,0 +1,17 @@
+- layout( :title => @computer.name,
+  :uplink => '/computer',
+  :uplink_title => 'Select another computer', 
+  :scripts => [ javascript_path('datagrid') ])
+- unless @computer.reports.empty?
+  .table-responsive
+    %table.table.table-hover#reports
+      %caption Puppet Reports
+      %thead
+        %tr
+          %th Report time
+          %th Status
+      %tbody
+        - @computer.reports.reverse.each do |r|
+          %tr
+            %td= report_link(r)
+            %td= status_tag(r)

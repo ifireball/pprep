@@ -1,0 +1,19 @@
+%td
+  %label.input-group.input-group-sm
+    %span.form-control.selected-enum-value
+      All
+    %div.input-group-btn
+      %button.btn.btn-default.dropdown-toggle{:type => "button", 
+        "data-toggle" => "dropdown"}
+        Show
+        %span.caret
+      %ul.dropdown-menu.pull-right{:role => "menu"}
+        %li 
+          %a{:href => "#"}
+            All
+        %li.divider
+        - @column.values.each do |val|
+          %li 
+            %a{:href => "#"}
+              != @column.format_value(val)
+
